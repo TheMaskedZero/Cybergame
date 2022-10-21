@@ -24,8 +24,14 @@ public class Movement : MonoBehaviour
 
     [Header("keybindings")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
+/*    [SerializeField] KeyCode switchWeapon1 = KeyCode.Alpha1;
+    [SerializeField] KeyCode switchWeapon2 = KeyCode.Alpha2;*/
 
     [SerializeField] Transform orientation;
+
+    [Header("Weapons")]
+    [SerializeField] GameObject sword;
+    [SerializeField] GameObject gun;
 
     float horizInput;
     float vertiInput;
@@ -58,6 +64,18 @@ public class Movement : MonoBehaviour
         else
         {
             rb.drag = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gun.SetActive(true);
+            sword.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            sword.SetActive(true);
+            gun.SetActive(false);
         }
     }
 

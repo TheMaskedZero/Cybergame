@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class Movement : MonoBehaviour
     [Header("Weapons")]
     [SerializeField] GameObject sword;
     [SerializeField] GameObject gun;
+
+    [Header("UI")]
+    [SerializeField] GameObject swordUI;
+    [SerializeField] GameObject gunUI;
 
     float horizInput;
     float vertiInput;
@@ -70,12 +75,18 @@ public class Movement : MonoBehaviour
         {
             gun.SetActive(true);
             sword.SetActive(false);
+
+            gunUI.SetActive(true);
+            swordUI.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             sword.SetActive(true);
             gun.SetActive(false);
+
+            gunUI.SetActive(false);
+            swordUI.SetActive(true);
         }
     }
 

@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject swordUI;
     [SerializeField] GameObject gunUI;
+    [SerializeField] GameObject ammoUI;
 
     float horizInput;
     float vertiInput;
@@ -77,6 +78,7 @@ public class Movement : MonoBehaviour
             sword.SetActive(false);
 
             gunUI.SetActive(true);
+            ammoUI.SetActive(true);
             swordUI.SetActive(false);
         }
 
@@ -86,6 +88,7 @@ public class Movement : MonoBehaviour
             gun.SetActive(false);
 
             gunUI.SetActive(false);
+            ammoUI.SetActive(false);
             swordUI.SetActive(true);
         }
     }

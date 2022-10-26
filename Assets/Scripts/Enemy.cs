@@ -30,6 +30,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDMG (float amount)
+    {
+        enemyHealth -= amount;
+        Debug.Log(enemyHealth);
+    }
+
     /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SLAH"))

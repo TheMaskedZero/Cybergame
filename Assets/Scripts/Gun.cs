@@ -21,14 +21,15 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ammoUI.text = string(ammoCount);
+        Reload();
+        ammoUI.text = $"{ammoCount}";
     }
 
     void Reload()
     {
-        if (Input.GetKeyDown(relaodKey))
+        if (Input.GetKeyDown(KeyCode.R) && ammoCount == 0)
         {
-            ammoCount = magSize;
+            ammoCount += magSize;
         }        
     }
 }

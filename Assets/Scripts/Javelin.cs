@@ -7,8 +7,10 @@ public class Javelin : MonoBehaviour
 {
     //this code was inspired by https://www.youtube.com/watch?v=F20Sr5FlUlE
 
+    [Header("Javelin")]
     [SerializeField] Transform cam, atkPoint;
     [SerializeField] GameObject javelin;
+    [SerializeField] float damage;
 
     [Header("Settings")]
     //[SerializeField] int totalThrows;
@@ -66,5 +68,16 @@ public class Javelin : MonoBehaviour
     void ResetThrow()
     {
         readyToThrow = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Enemy enemy = gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDMG(damage);
+
+            javelin.SetActive(false);
+        }
     }
 }

@@ -4011,6 +4011,7 @@ MonoBehaviour:
   cam: {fileID: 963194228}
   atkPoint: {fileID: 1217847283}
   javelin: {fileID: 642184590}
+  damage: 20
   throwCD: 10
   javelinQUi: {fileID: 1542009126}
   throwKey: 113

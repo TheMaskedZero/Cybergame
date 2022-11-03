@@ -25,6 +25,7 @@ public class Javelin : MonoBehaviour
     [SerializeField] float throwUpForce;
 
     bool readyToThrow;
+    private GameObject spear;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class Javelin : MonoBehaviour
     {
         readyToThrow = false;
 
-        GameObject spear = Instantiate(javelin, atkPoint.position, cam.rotation);
+        spear = Instantiate(javelin, atkPoint.position, cam.rotation);
 
         Rigidbody spearRB = spear.GetComponent<Rigidbody>();
 
@@ -72,12 +73,14 @@ public class Javelin : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Enemy enemy = gameObject.GetComponent<Enemy>();
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDMG(damage);
-
-            javelin.SetActive(false);
+            if (spear != null)
+            {
+                Destroy(spear);
+            }
         }
     }
 }

@@ -10,7 +10,6 @@ public class Javelin : MonoBehaviour
     [Header("Javelin")]
     [SerializeField] Transform cam, atkPoint;
     [SerializeField] GameObject javelin;
-    [SerializeField] float damage;
 
     [Header("Settings")]
     //[SerializeField] int totalThrows;
@@ -41,12 +40,8 @@ public class Javelin : MonoBehaviour
             Throw();
 
             javelinQUi.fillAmount = 0f;
+            //javelinQUi.fillAmount += (1 * Time.deltaTime);
         }
-
-        /*if (throwCD < 10)
-        {
-            javelinQUi.fillAmount += (1 * Time.deltaTime) / 10;
-        }*/
     }
 
     void Throw()
@@ -69,18 +64,5 @@ public class Javelin : MonoBehaviour
     void ResetThrow()
     {
         readyToThrow = true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemy.TakeDMG(damage);
-            if (spear != null)
-            {
-                Destroy(spear);
-            }
-        }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    //this script is basically just the gun script but slightly changed, to not have ammo for exmaple.
+
     [SerializeField] float damage;
     [SerializeField] float swingRange;
     [SerializeField] Camera swordCam;

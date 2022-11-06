@@ -56,13 +56,13 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ground check
+        //checks if your touching the ground.
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight /** 0.5f*/ + 0.2f, whatIsGround);
 
         MyInput();
         SpeedControl();
 
-        //handle drag
+        //handle drag, makes it so you have no drag while in the air.
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -72,6 +72,7 @@ public class Movement : MonoBehaviour
             rb.drag = 0;
         }
 
+        //The next two if's changes the Ui to match with the weapon your holding.
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gun.SetActive(true);

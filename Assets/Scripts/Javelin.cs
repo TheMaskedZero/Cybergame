@@ -12,7 +12,7 @@ public class Javelin : MonoBehaviour
     [SerializeField] GameObject javelin;
 
     [Header("Settings")]
-    //[SerializeField] int totalThrows;
+    //[SerializeField] int totalThrows; (don't use this part but found it neat, since it can be used for setting how many times the javelin can be thrown)
     [SerializeField] float throwCD;
 
     [Header("UI")]
@@ -40,10 +40,17 @@ public class Javelin : MonoBehaviour
             Throw();
 
             javelinQUi.fillAmount = 0f;
-            //javelinQUi.fillAmount += (1 * Time.deltaTime);
+        }
+        
+        //Changes the fill amount of the the white square over time, slowy filling it up again, over a given time.
+        if (readyToThrow == false)
+        {
+            javelinQUi.fillAmount += 1 / throwCD * Time.deltaTime;
+
         }
     }
 
+    //Throw is the function that Instantiates the javelin, and where it adds forces to the object.
     void Throw()
     {
         readyToThrow = false;
@@ -56,7 +63,7 @@ public class Javelin : MonoBehaviour
 
         spearRB.AddForce(forceToAdd, ForceMode.Impulse);
 
-        //totalThrow --;
+        //totalThrow --; (for the not used part)
 
         Invoke(nameof(ResetThrow), throwCD);
     }

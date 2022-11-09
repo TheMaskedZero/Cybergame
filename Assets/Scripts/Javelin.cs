@@ -35,6 +35,7 @@ public class Javelin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Spear got YEET
         if (Input.GetKeyDown(throwKey) && readyToThrow)
         {
             Throw();
@@ -42,7 +43,7 @@ public class Javelin : MonoBehaviour
             javelinQUi.fillAmount = 0f;
         }
         
-        //Changes the fill amount of the the white square over time, slowy filling it up again, over a given time.
+        //Changes the fill amount of the the white square in the Ui over time, slowy filling it up again, over a given time.
         if (readyToThrow == false)
         {
             javelinQUi.fillAmount += 1 / throwCD * Time.deltaTime;
@@ -55,6 +56,7 @@ public class Javelin : MonoBehaviour
     {
         readyToThrow = false;
 
+        //Instantiates a javelin at a given point and the same rotation as the camera.
         spear = Instantiate(javelin, atkPoint.position, cam.rotation);
 
         Rigidbody spearRB = spear.GetComponent<Rigidbody>();

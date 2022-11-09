@@ -5,6 +5,8 @@ using TMPro;
 
 public class Gun : MonoBehaviour
 {
+    //This code was inspired from: https://www.youtube.com/watch?v=THnivyG0Mvo
+
     [Header("Reload")]
     [SerializeField] float ammoCount = 0;
     [SerializeField] float magSize;
@@ -42,11 +44,13 @@ public class Gun : MonoBehaviour
 
     void Pewpew()
     {
+        //Shooting a raycast from the Camera's position and the way it's facing.
         RaycastHit hit;
         if (Physics.Raycast(pewCam.transform.position, pewCam.transform.forward, out hit, pewRange))
         {
             Debug.Log(hit.transform.name);
 
+            //Calling the function made in the Enemy script so the enemy takes damage, and checks if we've hit an enemy
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if (enemy != null)
             {

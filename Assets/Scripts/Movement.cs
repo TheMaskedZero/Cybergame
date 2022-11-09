@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
 
     [Header("keybindings")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
-/*    [SerializeField] KeyCode switchWeapon1 = KeyCode.Alpha1;
+/*    [SerializeField] KeyCode switchWeapon1 = KeyCode.Alpha1; (meant to use "switchWeapon" instead of Alpha1 and 2 but didn't want to work?)
     [SerializeField] KeyCode switchWeapon2 = KeyCode.Alpha2;*/
 
     [SerializeField] Transform orientation;
@@ -104,7 +104,7 @@ public class Movement : MonoBehaviour
         horizInput = Input.GetAxisRaw("Horizontal");
         vertiInput = Input.GetAxisRaw("Vertical");
 
-        //can you jump?
+        //makes you do da jump
         if (Input.GetKey(jumpKey) && canJump && grounded)
         {
             canJump = false;
@@ -136,7 +136,7 @@ public class Movement : MonoBehaviour
     {
         Vector3 flatvel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        //limit vel
+        //limit velocity
         if (flatvel.magnitude > moveSpeed)
         {
             Vector3 limitedvel = flatvel.normalized * moveSpeed;
@@ -146,7 +146,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        //resetting y vel
+        //resetting y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         //FroceMode.Impuse cause it's only applied once

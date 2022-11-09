@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    //This code was inspired from: https://www.youtube.com/watch?v=THnivyG0Mvo
+
     [SerializeField] GameObject enemy;
 
     [SerializeField] float enemyHealth;
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
     {
         nav.SetDestination(target.position);
 
+        //Disables the enemy when it runs out of health
         if (enemyHealth <= 0)
         {
             enemy.SetActive(false);
@@ -30,18 +33,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Function used to deal damage to the enemy
     public void TakeDMG (float amount)
     {
         enemyHealth -= amount;
         Debug.Log(enemyHealth);
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("SLAH"))
-        {
-            enemyHealth -= 1;
-            Debug.Log("he was hit");
-        }
-    }*/
 }

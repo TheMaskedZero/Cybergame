@@ -31,6 +31,7 @@ public class PlayerCam : MonoBehaviour
         yRoation += mouseX;
 
         xRoation -= mouseY;
+        //making a cap on how far you can move the camera up and down (so you can't spin it 180)
         xRoation = Mathf.Clamp(xRoation, -90f, 90f);
 
         //Roate cam and orientation
